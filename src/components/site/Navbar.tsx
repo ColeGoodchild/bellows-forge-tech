@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 
 const links = [
-  { label: "Services", href: "/#services" },
-  { label: "Process", href: "/#process" },
-  { label: "Results", href: "/#testimonials" },
-  { label: "FAQ", href: "/#faq" },
-];
+  { label: "Pricing", to: "/pricing" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+] as const;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,23 +32,17 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.to}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground" }}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <Link
-            to="/about"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            activeProps={{ className: "text-foreground" }}
-          >
-            About
-          </Link>
           <Button asChild variant="forge" size="default">
-            <a href="/#contact">Start Forging</a>
+            <Link to="/contact">Get My Website</Link>
           </Button>
         </div>
 
@@ -67,22 +60,19 @@ export function Navbar() {
         <div className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.label}
-                href={l.href}
+                to={l.to}
                 onClick={() => setOpen(false)}
                 className="text-sm text-muted-foreground"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
-            <Link to="/about" onClick={() => setOpen(false)} className="text-sm text-muted-foreground">
-              About
-            </Link>
             <Button asChild variant="forge">
-              <a href="/#contact" onClick={() => setOpen(false)}>
-                Start Forging
-              </a>
+              <Link to="/contact" onClick={() => setOpen(false)}>
+                Get My Website
+              </Link>
             </Button>
           </div>
         </div>
