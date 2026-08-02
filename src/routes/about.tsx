@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Button } from "@/components/ui/button";
-import texture from "@/assets/texture-steel.jpg";
+import { CtaBand } from "@/components/site/CtaBand";
+import texture from "@/assets/precision-grid.jpg";
 
-const title = "About GrowthBellows — Craftsmanship Meets Engineering";
+const url = "https://bellows-forge-tech.lovable.app/about";
+const title = "About GrowthBellows — A Business Growth Company";
 const description =
-  "GrowthBellows brings an engineering mindset to small business growth: intentional systems, continuous improvement, and the right technology.";
+  "GrowthBellows helps small businesses make more money and save time with practical websites, local SEO and automation. Plain English, flat prices, real results.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -13,6 +14,23 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: url },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: url }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "GrowthBellows",
+          url: "https://bellows-forge-tech.lovable.app",
+          description,
+          slogan: "Forging Growth Through Technology",
+        }),
+      },
     ],
   }),
   component: About,
@@ -20,20 +38,20 @@ export const Route = createFileRoute("/about")({
 
 const values = [
   {
-    title: "Craftsmanship",
-    body: "Every build is deliberate. We care about the details nobody asks for — load times, copy hierarchy, the third click.",
+    title: "We speak plain English",
+    body: "No jargon, no buzzwords, no acronyms you have to Google. If we cannot explain it simply, we will not sell it to you.",
   },
   {
-    title: "Engineering mindset",
-    body: "We treat growth as a system with inputs, constraints and feedback loops, not a series of disconnected campaigns.",
+    title: "We price up front",
+    body: "Every package and price is on our pricing page. You know what something costs before you talk to anyone.",
   },
   {
-    title: "Modern technology",
-    body: "AI, automation and clean infrastructure — applied where they create leverage, never for their own sake.",
+    title: "We build things that pay for themselves",
+    body: "A website is only worth what it brings in. We measure calls, form fills and booked jobs, not design awards.",
   },
   {
-    title: "Small business advantage",
-    body: "The right systems let a small team move faster and serve better than companies ten times their size.",
+    title: "We stay after launch",
+    body: "Hosting, updates, edits and improvements. You are not handed a login and left to figure it out.",
   },
 ];
 
@@ -47,70 +65,64 @@ function About() {
           aria-hidden
           width={1536}
           height={768}
-          className="absolute inset-0 h-full w-full object-cover opacity-50"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-[image:var(--gradient-forge)] opacity-70" aria-hidden />
-        <div className="relative mx-auto max-w-4xl px-6 py-28">
-          <p className="eyebrow">Our Story</p>
-          <h1 className="mt-6 text-5xl leading-[1.05] font-semibold sm:text-6xl">
-            A workshop for <span className="text-forged">business growth</span>
+        <div className="relative mx-auto max-w-3xl px-6 py-24">
+          <p className="eyebrow">About Us</p>
+          <h1 className="mt-6 text-4xl leading-tight font-semibold sm:text-5xl">
+            We help small businesses make money and save time.
           </h1>
-          <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-            A blacksmith does not create strength from nothing. They apply heat, tools and precision
-            to transform raw material into something valuable. GrowthBellows works the same way —
-            the potential already exists inside your business; we build the systems that shape it.
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            That is the whole job. Everything we build — a website, a Google listing, an automated
+            follow-up — exists to bring in more work or give you back hours in your week.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-24">
+      <section className="mx-auto max-w-3xl px-6 py-24">
         <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
           <p>
-            We started GrowthBellows because too many capable businesses were being let down by
-            their technology. Beautiful work, loyal customers, real expertise — paired with a
-            website that didn't convert, a search presence nobody could find, and a week consumed by
-            admin that software should have handled.
+            Most small business owners we meet are good at what they do and badly served by their
+            technology. The website was built years ago and never brought in a call. Nobody can find
+            them on Google. Half the week disappears into quotes, reminders and chasing people who
+            never wrote back.
           </p>
           <p>
-            So we approach the problem the way an engineering firm would. We study the business,
-            map the customer journey, and design the digital foundation deliberately. Then we
-            automate the repetitive work, connect the systems, and measure what actually changes.
-            Nothing ships because it looks impressive; it ships because it moves a number.
+            None of that is a marketing problem. It is a plumbing problem. So we fix the plumbing:
+            a fast website that tells people what you do and makes it easy to contact you, a Google
+            presence that shows up when someone nearby searches, and automation that handles the
+            repetitive parts of your day.
           </p>
           <p>
-            Technology is our material. Craftsmanship is our method. Growth is the outcome.
+            We work with contractors, electricians, plumbers, dentists, clinics, shops and service
+            businesses of every kind. Small teams, real customers, tight budgets. We keep our prices
+            flat and published so you never have to guess.
           </p>
         </div>
 
-        <blockquote className="mt-14 border-l-2 border-primary pl-6 font-display text-2xl leading-snug text-foreground">
-          &ldquo;Every great business is forged through intentional systems, continuous improvement,
-          and the right tools.&rdquo;
+        <blockquote className="mt-14 border-l-2 border-primary pl-6 font-display text-xl leading-snug text-foreground">
+          &ldquo;If it does not bring in customers or save you time, we do not build it.&rdquo;
         </blockquote>
       </section>
 
-      <section className="border-y border-border bg-card/30">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <p className="eyebrow">What We Stand For</p>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
+      <section className="border-t border-border bg-card/30">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="eyebrow">How We Work</p>
+          <h2 className="mt-5 max-w-xl text-3xl font-semibold sm:text-4xl">
+            Four things we will not budge on
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {values.map((v) => (
-              <div key={v.title} className="bg-background p-8">
-                <h2 className="text-lg font-semibold">{v.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.body}</p>
+              <div key={v.title} className="panel p-8">
+                <h3 className="text-lg font-semibold">{v.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 py-24 text-center">
-        <h2 className="text-4xl font-semibold sm:text-5xl">Let's build your system</h2>
-        <p className="mt-5 text-muted-foreground">
-          Tell us where growth is stalling and we'll show you what to forge first.
-        </p>
-        <Button asChild variant="forge" size="xl" className="mt-9">
-          <a href="/#contact">Schedule Your Growth Consultation</a>
-        </Button>
-      </section>
+      <CtaBand />
     </>
   );
 }

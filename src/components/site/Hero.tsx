@@ -1,64 +1,55 @@
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import heroForge from "@/assets/hero-forge.jpg";
+import heroVisual from "@/assets/precision-grid.jpg";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="hairline-grid absolute inset-0 opacity-40" aria-hidden />
-      <div
-        className="absolute inset-0 bg-[image:var(--gradient-forge)] opacity-70"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-[1.05fr_1fr] lg:py-32">
+      <div className="hairline-grid absolute inset-0 opacity-70" aria-hidden />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:py-32">
         <div className="rise">
-          <p className="eyebrow">AI-Powered Growth Systems</p>
-          <h1 className="mt-6 text-5xl leading-[1.02] font-semibold sm:text-6xl lg:text-7xl">
-            Forging Growth
-            <br />
-            Through <span className="text-forged">Technology</span>
+          <p className="eyebrow">Websites · Local SEO · Automation</p>
+          <h1 className="mt-6 text-4xl leading-[1.06] font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+            Websites That Help Your Business Grow.
           </h1>
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            We build AI-powered growth systems for small businesses — combining high-converting
-            websites, SEO, automation, and intelligent tools that help you attract more customers
-            and operate more efficiently.
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            We build websites, improve your Google rankings, and automate repetitive work so you can
+            spend less time chasing customers and more time serving them.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="forge" size="xl">
-              <a href="#contact">Start Forging Your Growth</a>
+              <Link to="/contact">Get My Website</Link>
             </Button>
             <Button asChild variant="steel" size="xl">
-              <a href="#services">See Our Services</a>
+              <Link to="/pricing">View Pricing</Link>
             </Button>
           </div>
 
           <dl className="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
             {[
-              { k: "Systems", v: "Built to convert" },
-              { k: "AI", v: "Applied, not hyped" },
-              { k: "Data", v: "Measured monthly" },
+              { k: "$297", v: "Starter website, flat fee" },
+              { k: "5 days", v: "Typical turnaround" },
+              { k: "No contracts", v: "Cancel monthly plans anytime" },
             ].map((s) => (
               <div key={s.k}>
-                <dt className="font-display text-sm font-semibold text-primary">{s.k}</dt>
-                <dd className="mt-1 text-xs text-muted-foreground">{s.v}</dd>
+                <dt className="font-display text-base font-semibold text-primary">{s.k}</dt>
+                <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.v}</dd>
               </div>
             ))}
           </dl>
         </div>
 
         <div className="relative">
-          <div className="panel relative overflow-hidden rounded-lg">
+          <div className="panel overflow-hidden">
             <img
-              src={heroForge}
-              alt="Glowing metal being precisely shaped on a modern anvil"
-              width={1536}
-              height={1152}
+              src={heroVisual}
+              alt="Precision-engineered charcoal panels with copper detailing, representing carefully built websites"
+              width={1408}
+              height={1104}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--background),transparent_55%)] opacity-80" />
           </div>
-          <div className="pointer-events-none absolute -inset-x-8 -bottom-10 h-32 bg-[image:var(--gradient-forge)] blur-2xl" />
         </div>
       </div>
     </section>
