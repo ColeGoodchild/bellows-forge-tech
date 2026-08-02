@@ -5,6 +5,7 @@ import { Problem } from "@/components/site/Problem";
 import { HowWeHelp } from "@/components/site/HowWeHelp";
 import { WhyUs } from "@/components/site/WhyUs";
 import { WhoWeWorkWith } from "@/components/site/WhoWeWorkWith";
+import { PricingCards } from "@/components/site/PricingCards";
 import { CtaBand } from "@/components/site/CtaBand";
 import { FAQ } from "@/components/site/FAQ";
 import { ContactSection } from "@/components/site/ContactSection";
@@ -53,6 +54,7 @@ function Index() {
       <HowWeHelp />
       <WhyUs />
       <WhoWeWorkWith />
+      <PricingCards />
       <CtaBand />
       <FAQ />
       <ContactSection />
