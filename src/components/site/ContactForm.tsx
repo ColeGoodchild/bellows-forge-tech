@@ -8,21 +8,37 @@ import { Label } from "@/components/ui/label";
 export function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitting(true);
     const form = e.currentTarget;
-    setTimeout(() => {
-      setSubmitting(false);
+    setSubmitting(true);
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error("Request failed");
       form.reset();
       toast.success("Thanks — we got it", {
         description: "We reply within one business day.",
       });
-    }, 600);
+    } catch {
+      toast.error("That didn't send", {
+        description: "Please try again or email us directly.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <form onSubmit={onSubmit} className="panel p-8">
+    <form
+      action="https://usebasin.com/f/2ba655ec1c91"
+      method="POST"
+      onSubmit={onSubmit}
+      className="panel p-8"
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Name</Label>
