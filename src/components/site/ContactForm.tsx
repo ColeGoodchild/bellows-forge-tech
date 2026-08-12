@@ -39,6 +39,8 @@ export function ContactForm() {
       onSubmit={onSubmit}
       className="panel p-8"
     >
+      <input type="hidden" name="_subject" value="New GrowthBellows website inquiry" />
+      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Name</Label>
