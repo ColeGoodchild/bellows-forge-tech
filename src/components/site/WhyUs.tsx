@@ -1,13 +1,27 @@
 const reasons = [
-  { title: "No fluff", body: "Plain answers, plain pricing, no jargon in between." },
-  { title: "Professional websites", body: "Clean design that makes a small business look established." },
-  { title: "Built for speed", body: "Pages load fast on phones, where most of your customers are." },
-  { title: "SEO from day one", body: "Every site ships with the basics search engines look for." },
-  { title: "Transparent pricing", body: "Prices are on the website. No discovery call required to see them." },
-  { title: "Fast turnaround", body: "A Starter Website is usually live in about five business days." },
-  { title: "No long contracts", body: "Monthly plans are month to month. Stay because it works." },
-  { title: "Real communication", body: "You get a person who answers, not a ticket number." },
-  { title: "Focused on results", body: "More calls, more booked jobs, fewer hours on busy work." },
+  { title: "No fluff", body: "Plain answers, plain pricing, no unnecessary jargon." },
+  {
+    title: "Built for business",
+    body: "We focus on systems that produce useful business outcomes, not technology for technology's sake.",
+  },
+  {
+    title: "Fast websites",
+    body: "Professional websites designed to work well on phones and load quickly.",
+  },
+  {
+    title: "SEO from day one",
+    body: "Every website is built with a strong technical SEO foundation.",
+  },
+  {
+    title: "Practical automation",
+    body: "We automate specific business problems instead of selling vague AI solutions.",
+  },
+  {
+    title: "Transparent pricing",
+    body: "See what our core services cost before you talk to us.",
+  },
+  { title: "No long contracts", body: "Monthly services remain month to month." },
+  { title: "Real communication", body: "You get a person who actually answers." },
 ];
 
 export function WhyUs() {
@@ -17,11 +31,11 @@ export function WhyUs() {
         <div className="max-w-2xl">
           <p className="eyebrow">Why GrowthBellows</p>
           <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
-            A software company that also builds your website.
+            Technology without the corporate nonsense.
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r) => (
             <div
               key={r.title}

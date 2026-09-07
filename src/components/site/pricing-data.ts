@@ -43,7 +43,7 @@ export const plans: Plan[] = [
       "Speed optimization",
       "Conversion-focused layout",
     ],
-    cta: "Let's Build It",
+    cta: "Build My Growth Website",
   },
   {
     name: "Growth Engine",
@@ -64,17 +64,23 @@ export const plans: Plan[] = [
   },
   {
     name: "Business Automation",
-    price: "Custom quote",
-    summary: "Stop wasting time on repetitive work.",
+    price: "Starting at $997",
+    summary:
+      "Automate one repetitive workflow or build an entire system around the way your business operates.",
     features: [
-      "AI chatbots",
-      "Lead qualification",
+      "Lead follow-up",
+      "Missed-call recovery",
+      "AI receptionists",
+      "Appointment scheduling",
       "CRM automation",
-      "Appointment reminders",
-      "Automated follow-up emails",
-      "Workflow automation",
+      "Review requests",
+      "Document processing",
+      "Customer support",
     ],
-    cta: "Book A Consultation",
+    fine: [
+      "Final pricing depends on workflow complexity, integrations, usage, and required customization.",
+    ],
+    cta: "Explore Automation",
   },
 ];
 

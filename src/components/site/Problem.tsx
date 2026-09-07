@@ -1,9 +1,28 @@
 const reasons = [
-  { title: "Slow websites", body: "People leave before the page finishes loading. Every extra second costs you calls." },
-  { title: "Outdated design", body: "If the site looks old, people assume the business is too — and call the next name on the list." },
-  { title: "Poor Google rankings", body: "If you are not on the first page for your service and your town, you are invisible." },
-  { title: "No follow-up process", body: "A form comes in, nobody replies for two days, and the job goes to someone else." },
-  { title: "Manual busy work", body: "Quoting, scheduling and reminders eat hours a week that should be billable." },
+  {
+    title: "Lost leads",
+    body: "Someone fills out a form and doesn't hear back until tomorrow. By then they've hired the company that answered first.",
+  },
+  {
+    title: "Missed calls",
+    body: "You're serving a customer and another potential customer calls. Nobody answers, and that job is gone.",
+  },
+  {
+    title: "Poor Google visibility",
+    body: "Your competitors appear when local customers search for the services you provide. You never get the chance to quote.",
+  },
+  {
+    title: "Manual follow-up",
+    body: "Your team spends hours chasing leads who should have been contacted automatically — hours that could have been billable.",
+  },
+  {
+    title: "Administrative busywork",
+    body: "Employees copy information between emails, spreadsheets, CRMs, forms, and other systems instead of serving customers.",
+  },
+  {
+    title: "Appointment chaos",
+    body: "Customers and employees waste time playing phone tag, and bookings slip through the gaps.",
+  },
 ];
 
 export function Problem() {
@@ -13,10 +32,10 @@ export function Problem() {
         <div className="max-w-2xl">
           <p className="eyebrow">The Problem</p>
           <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
-            Most businesses lose customers before the phone ever rings.
+            Your business shouldn't lose money to avoidable problems.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            The work is good. The website is what is getting in the way.
+            The work is good. The systems around the work are what cost you jobs.
           </p>
         </div>
 
