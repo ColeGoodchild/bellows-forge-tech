@@ -8,29 +8,36 @@ export function Hero() {
       <div className="hairline-grid absolute inset-0 opacity-70" aria-hidden />
       <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:py-32">
         <div className="rise">
-          <p className="eyebrow">Websites · Local SEO · Automation</p>
+          <p className="eyebrow">Websites · Local SEO · AI Automation</p>
           <h1 className="mt-6 text-4xl leading-[1.06] font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Websites That Help Your Business Grow.
+            Get More Customers. Do Less Busywork.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            We build websites, improve your Google rankings, and automate repetitive work so you can
-            spend less time chasing customers and more time serving them.
+            We build high-converting websites, improve your local Google visibility, and automate
+            the repetitive work that keeps small businesses stuck in the weeds.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="forge" size="xl">
-              <Link to="/contact">Get My Website</Link>
+              <Link to="/contact">Get More Customers</Link>
             </Button>
             <Button asChild variant="steel" size="xl">
-              <Link to="/pricing">View Pricing</Link>
+              <Link to="/automation">Automate My Business</Link>
             </Button>
           </div>
 
-          <dl className="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
+          <p className="mt-5 text-sm text-muted-foreground">
+            <Link to="/pricing" className="text-primary underline-offset-4 hover:underline">
+              $297 starter websites
+            </Link>{" "}
+            · No long contracts · Fast turnaround
+          </p>
+
+          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
             {[
-              { k: "$297", v: "Starter website, flat fee" },
-              { k: "5 days", v: "Typical turnaround" },
-              { k: "No contracts", v: "Cancel monthly plans anytime" },
+              { k: "Build", v: "Websites that make it easy to contact you" },
+              { k: "Grow", v: "Local SEO that puts you in front of nearby customers" },
+              { k: "Automate", v: "Follow-up, scheduling and admin handled for you" },
             ].map((s) => (
               <div key={s.k}>
                 <dt className="font-display text-base font-semibold text-primary">{s.k}</dt>
@@ -44,7 +51,7 @@ export function Hero() {
           <div className="panel overflow-hidden">
             <img
               src={heroVisual}
-              alt="Precision-engineered charcoal panels with copper detailing, representing carefully built websites"
+              alt="Precision-engineered charcoal panels with copper detailing, representing carefully built websites and automated systems"
               width={1408}
               height={1104}
               className="h-full w-full object-cover"
