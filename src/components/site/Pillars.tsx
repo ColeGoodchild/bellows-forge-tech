@@ -8,7 +8,6 @@ type Pillar = {
   items: string[];
   cta: string;
   to: "/services" | "/automation";
-  hash?: string;
 };
 
 export const pillars: Pillar[] = [
@@ -27,7 +26,6 @@ export const pillars: Pillar[] = [
     ],
     cta: "Explore Websites",
     to: "/services",
-    hash: "build",
   },
   {
     n: "02",
@@ -44,7 +42,6 @@ export const pillars: Pillar[] = [
     ],
     cta: "Explore Local SEO",
     to: "/services",
-    hash: "grow",
   },
   {
     n: "03",
@@ -97,7 +94,6 @@ export function Pillars() {
 
               <Link
                 to={p.to}
-                hash={p.hash}
                 className="mt-8 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary transition-opacity hover:opacity-80"
               >
                 {p.cta}
