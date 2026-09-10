@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as AutomationRouteImport } from './routes/automation'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as AutomationIndexRouteImport } from './routes/automation.index'
+import { Route as AutomationSlugRouteImport } from './routes/automation.$slug'
+import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,11 +26,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AutomationRoute = AutomationRouteImport.update({
-  id: '/automation',
-  path: '/automation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -46,55 +43,95 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AutomationIndexRoute = AutomationIndexRouteImport.update({
+  id: '/automation/',
+  path: '/automation/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationSlugRoute = AutomationSlugRouteImport.update({
+  id: '/automation/$slug',
+  path: '/automation/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/industries/$slug',
+  path: '/industries/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/automation': typeof AutomationRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/automation/$slug': typeof AutomationSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/automation/': typeof AutomationIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/automation': typeof AutomationRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/automation/$slug': typeof AutomationSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/automation': typeof AutomationIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/automation': typeof AutomationRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/automation/$slug': typeof AutomationSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/automation/': typeof AutomationIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/automation' | '/contact' | '/pricing' | '/services'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/services'
+    | '/automation/$slug'
+    | '/industries/$slug'
+    | '/automation/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/automation' | '/contact' | '/pricing' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/services'
+    | '/automation/$slug'
+    | '/industries/$slug'
+    | '/automation'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/automation'
     | '/contact'
     | '/pricing'
     | '/services'
+    | '/automation/$slug'
+    | '/industries/$slug'
+    | '/automation/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AutomationRoute: typeof AutomationRoute
   ContactRoute: typeof ContactRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
+  AutomationSlugRoute: typeof AutomationSlugRoute
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
+  AutomationIndexRoute: typeof AutomationIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -111,13 +148,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/automation': {
-      id: '/automation'
-      path: '/automation'
-      fullPath: '/automation'
-      preLoaderRoute: typeof AutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -141,16 +171,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/automation/': {
+      id: '/automation/'
+      path: '/automation'
+      fullPath: '/automation/'
+      preLoaderRoute: typeof AutomationIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation/$slug': {
+      id: '/automation/$slug'
+      path: '/automation/$slug'
+      fullPath: '/automation/$slug'
+      preLoaderRoute: typeof AutomationSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/industries/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AutomationRoute: AutomationRoute,
   ContactRoute: ContactRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
+  AutomationSlugRoute: AutomationSlugRoute,
+  IndustriesSlugRoute: IndustriesSlugRoute,
+  AutomationIndexRoute: AutomationIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
