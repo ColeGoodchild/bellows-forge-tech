@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LocalSeoRouteImport } from './routes/local-seo'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as AutomationIndexRouteImport } from './routes/automation.index'
 import { Route as AutomationSlugRouteImport } from './routes/automation.$slug'
 import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
@@ -33,6 +35,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocalSeoRoute = LocalSeoRouteImport.update({
+  id: '/local-seo',
+  path: '/local-seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -41,6 +48,11 @@ const PricingRoute = PricingRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebDesignRoute = WebDesignRouteImport.update({
+  id: '/web-design',
+  path: '/web-design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AutomationIndexRoute = AutomationIndexRouteImport.update({
@@ -63,8 +75,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/automation/': typeof AutomationIndexRoute
@@ -73,8 +87,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/automation': typeof AutomationIndexRoute
@@ -84,8 +100,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/automation/': typeof AutomationIndexRoute
@@ -96,8 +114,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
     | '/automation/'
@@ -106,8 +126,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
     | '/automation'
@@ -116,8 +138,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
     | '/automation/'
@@ -127,8 +151,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  LocalSeoRoute: typeof LocalSeoRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
+  WebDesignRoute: typeof WebDesignRoute
   AutomationSlugRoute: typeof AutomationSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   AutomationIndexRoute: typeof AutomationIndexRoute
@@ -157,6 +183,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/local-seo': {
+      id: '/local-seo'
+      path: '/local-seo'
+      fullPath: '/local-seo'
+      preLoaderRoute: typeof LocalSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -169,6 +202,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/web-design': {
+      id: '/web-design'
+      path: '/web-design'
+      fullPath: '/web-design'
+      preLoaderRoute: typeof WebDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/automation/': {
@@ -199,8 +239,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  LocalSeoRoute: LocalSeoRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
+  WebDesignRoute: WebDesignRoute,
   AutomationSlugRoute: AutomationSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
   AutomationIndexRoute: AutomationIndexRoute,
