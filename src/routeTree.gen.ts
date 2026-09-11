@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LocalSeoRouteImport } from './routes/local-seo'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -18,7 +19,10 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as AutomationIndexRouteImport } from './routes/automation.index'
 import { Route as AutomationSlugRouteImport } from './routes/automation.$slug'
+import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
+import { Route as LocationsIndexRouteImport } from './routes/locations.index'
+import { Route as LocationsSlugRouteImport } from './routes/locations.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -65,15 +74,31 @@ const AutomationSlugRoute = AutomationSlugRouteImport.update({
   path: '/automation/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/industries/',
+  path: '/industries/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
   id: '/industries/$slug',
   path: '/industries/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsIndexRoute = LocationsIndexRouteImport.update({
+  id: '/locations/',
+  path: '/locations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsSlugRoute = LocationsSlugRouteImport.update({
+  id: '/locations/$slug',
+  path: '/locations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
@@ -81,11 +106,15 @@ export interface FileRoutesByFullPath {
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/locations/$slug': typeof LocationsSlugRoute
   '/automation/': typeof AutomationIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/locations/': typeof LocationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
@@ -93,12 +122,16 @@ export interface FileRoutesByTo {
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/locations/$slug': typeof LocationsSlugRoute
   '/automation': typeof AutomationIndexRoute
+  '/industries': typeof IndustriesIndexRoute
+  '/locations': typeof LocationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
@@ -106,13 +139,17 @@ export interface FileRoutesById {
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/locations/$slug': typeof LocationsSlugRoute
   '/automation/': typeof AutomationIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/locations/': typeof LocationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/case-studies'
     | '/contact'
     | '/local-seo'
     | '/pricing'
@@ -120,11 +157,15 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
+    | '/locations/$slug'
     | '/automation/'
+    | '/industries/'
+    | '/locations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/case-studies'
     | '/contact'
     | '/local-seo'
     | '/pricing'
@@ -132,11 +173,15 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
+    | '/locations/$slug'
     | '/automation'
+    | '/industries'
+    | '/locations'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/case-studies'
     | '/contact'
     | '/local-seo'
     | '/pricing'
@@ -144,12 +189,16 @@ export interface FileRouteTypes {
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
+    | '/locations/$slug'
     | '/automation/'
+    | '/industries/'
+    | '/locations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   LocalSeoRoute: typeof LocalSeoRoute
   PricingRoute: typeof PricingRoute
@@ -157,7 +206,10 @@ export interface RootRouteChildren {
   WebDesignRoute: typeof WebDesignRoute
   AutomationSlugRoute: typeof AutomationSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
+  LocationsSlugRoute: typeof LocationsSlugRoute
   AutomationIndexRoute: typeof AutomationIndexRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
+  LocationsIndexRoute: typeof LocationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -174,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -225,11 +284,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AutomationSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industries/': {
+      id: '/industries/'
+      path: '/industries'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/industries/$slug': {
       id: '/industries/$slug'
       path: '/industries/$slug'
       fullPath: '/industries/$slug'
       preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/': {
+      id: '/locations/'
+      path: '/locations'
+      fullPath: '/locations/'
+      preLoaderRoute: typeof LocationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/$slug': {
+      id: '/locations/$slug'
+      path: '/locations/$slug'
+      fullPath: '/locations/$slug'
+      preLoaderRoute: typeof LocationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -238,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   LocalSeoRoute: LocalSeoRoute,
   PricingRoute: PricingRoute,
@@ -245,7 +326,10 @@ const rootRouteChildren: RootRouteChildren = {
   WebDesignRoute: WebDesignRoute,
   AutomationSlugRoute: AutomationSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
+  LocationsSlugRoute: LocationsSlugRoute,
   AutomationIndexRoute: AutomationIndexRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
+  LocationsIndexRoute: LocationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
