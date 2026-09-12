@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LocalSeoRouteImport } from './routes/local-seo'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as AutomationIndexRouteImport } from './routes/automation.index'
 import { Route as AutomationSlugRouteImport } from './routes/automation.$slug'
@@ -57,6 +58,11 @@ const PricingRoute = PricingRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WebDesignRoute = WebDesignRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/local-seo': typeof LocalSeoRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/local-seo'
     | '/pricing'
     | '/services'
+    | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
     | '/industries/$slug'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   LocalSeoRoute: typeof LocalSeoRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WebDesignRoute: typeof WebDesignRoute
   AutomationSlugRoute: typeof AutomationSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
@@ -261,6 +274,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/web-design': {
@@ -323,6 +343,7 @@ const rootRouteChildren: RootRouteChildren = {
   LocalSeoRoute: LocalSeoRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   WebDesignRoute: WebDesignRoute,
   AutomationSlugRoute: AutomationSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,

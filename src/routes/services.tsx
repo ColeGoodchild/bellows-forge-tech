@@ -8,6 +8,7 @@ const description =
   "GrowthBellows services for small businesses: professional website design, local SEO and Google Business Profile optimization, and practical business automation.";
 
 export const Route = createFileRoute("/services")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },

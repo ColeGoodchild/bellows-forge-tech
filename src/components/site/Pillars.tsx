@@ -7,7 +7,7 @@ type Pillar = {
   body: string;
   items: string[];
   cta: string;
-  to: "/services" | "/automation";
+  to: "/web-design" | "/local-seo" | "/automation";
 };
 
 export const pillars: Pillar[] = [
@@ -25,7 +25,7 @@ export const pillars: Pillar[] = [
       "Click-to-call",
     ],
     cta: "Explore Websites",
-    to: "/services",
+    to: "/web-design",
   },
   {
     n: "02",
@@ -41,7 +41,7 @@ export const pillars: Pillar[] = [
       "Analytics",
     ],
     cta: "Explore Local SEO",
-    to: "/services",
+    to: "/local-seo",
   },
   {
     n: "03",

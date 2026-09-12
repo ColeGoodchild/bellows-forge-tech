@@ -16,6 +16,7 @@ const crumbs: Crumb[] = [
 ];
 
 export const Route = createFileRoute("/locations/")({
+  staticData: { sitemap: true },
   head: () => seo({ path, title, description, breadcrumbs: crumbs }),
   component: LocationsPage,
 });

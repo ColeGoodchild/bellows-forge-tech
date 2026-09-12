@@ -17,6 +17,7 @@ const crumbs: Crumb[] = [
 ];
 
 export const Route = createFileRoute("/industries/")({
+  staticData: { sitemap: true },
   head: () =>
     seo({
       path,

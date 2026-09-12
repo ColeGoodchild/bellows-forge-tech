@@ -8,6 +8,7 @@ const description =
   "GrowthBellows helps small businesses make more money and save time with practical websites, local SEO and automation. Plain English, flat prices, real results.";
 
 export const Route = createFileRoute("/about")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },

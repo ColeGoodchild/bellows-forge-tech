@@ -15,6 +15,7 @@ const pricingFaqs = faqs.filter((f) =>
 );
 
 export const Route = createFileRoute("/pricing")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },

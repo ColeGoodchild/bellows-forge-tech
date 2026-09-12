@@ -37,6 +37,7 @@ const faqs = [
 ];
 
 export const Route = createFileRoute("/local-seo")({
+  staticData: { sitemap: true },
   head: () =>
     seo({
       path,

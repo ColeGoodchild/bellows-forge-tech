@@ -8,6 +8,7 @@ import { industryBySlug } from "@/components/site/industries-data";
 import { seo, serviceSchema, faqSchema, type Crumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/locations/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const location = locationBySlug(params.slug);
     if (!location) throw notFound();
