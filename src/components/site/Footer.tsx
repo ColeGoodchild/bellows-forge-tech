@@ -1,10 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { automationServices } from "@/data/automation-services";
+import { industries } from "./industries-data";
+import { locations } from "@/data/locations";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div className="max-w-sm">
           <Logo />
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -17,54 +20,93 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold">What we do</h2>
+          <h2 className="text-sm font-semibold">Services</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li>
-              <Link to="/pricing" className="hover:text-primary">
-                Small business website design
+              <Link to="/web-design" className="hover:text-primary">
+                Small business web design
               </Link>
             </li>
             <li>
-              <Link to="/pricing" className="hover:text-primary">
+              <Link to="/local-seo" className="hover:text-primary">
                 Local SEO &amp; Google Business Profile
               </Link>
             </li>
             <li>
-              <Link to="/pricing" className="hover:text-primary">
-                Website hosting &amp; care plans
+              <Link to="/automation" className="hover:text-primary">
+                AI &amp; business automation
               </Link>
             </li>
             <li>
               <Link to="/pricing" className="hover:text-primary">
-                Business &amp; AI automation
+                Pricing &amp; hosting plans
+              </Link>
+            </li>
+            <li>
+              <Link to="/case-studies" className="hover:text-primary">
+                Client case studies
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold">Company</h2>
+          <h2 className="text-sm font-semibold">Automation</h2>
+          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+            {automationServices.map((s) => (
+              <li key={s.slug}>
+                <Link
+                  to="/automation/$slug"
+                  params={{ slug: s.slug }}
+                  className="hover:text-primary"
+                >
+                  {s.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-semibold">Industries</h2>
+          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+            {industries.slice(0, 6).map((i) => (
+              <li key={i.slug}>
+                <Link
+                  to="/industries/$slug"
+                  params={{ slug: i.slug }}
+                  className="hover:text-primary"
+                >
+                  {i.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/industries" className="hover:text-primary">
+                All industries we serve
+              </Link>
+            </li>
+          </ul>
+
+          <h2 className="mt-8 text-sm font-semibold">Company</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li>
-              <Link to="/" className="hover:text-primary">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/pricing" className="hover:text-primary">
-                Pricing
-              </Link>
-            </li>
-            <li>
               <Link to="/about" className="hover:text-primary">
-                About
+                About GrowthBellows
               </Link>
             </li>
             <li>
               <Link to="/contact" className="hover:text-primary">
-                Contact
+                Contact us
               </Link>
             </li>
+            {locations.map((l) => (
+              <li key={l.slug}>
+                <Link to="/locations/$slug" params={{ slug: l.slug }} className="hover:text-primary">
+                  {l.city}, {l.state}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 
 const links = [
+  { label: "Web Design", to: "/web-design" },
+  { label: "Local SEO", to: "/local-seo" },
+  { label: "Automation", to: "/automation" },
+  { label: "Industries", to: "/industries" },
+  { label: "Case Studies", to: "/case-studies" },
   { label: "Pricing", to: "/pricing" },
   { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
 ] as const;
 
 export function Navbar() {
@@ -30,7 +34,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4">
         <Logo />
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <Link
               key={l.label}
@@ -42,7 +46,7 @@ export function Navbar() {
             </Link>
           ))}
           <Button asChild variant="forge" size="default">
-            <Link to="/contact">Get My Website</Link>
+            <Link to="/contact">Get Started</Link>
           </Button>
         </div>
 
@@ -50,14 +54,14 @@ export function Navbar() {
           type="button"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="text-foreground md:hidden"
+          className="text-foreground lg:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </nav>
 
       {open ? (
-        <div className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-xl md:hidden">
+        <div className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col gap-4">
             {links.map((l) => (
               <Link
@@ -69,9 +73,16 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="text-sm text-muted-foreground"
+            >
+              Contact
+            </Link>
             <Button asChild variant="forge">
               <Link to="/contact" onClick={() => setOpen(false)}>
-                Get My Website
+                Get Started
               </Link>
             </Button>
           </div>
