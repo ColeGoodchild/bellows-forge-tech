@@ -18,6 +18,7 @@ const description =
   "GrowthBellows builds fast small business websites, improves local SEO and Google Business Profile rankings, and automates repetitive work. Starter websites $297 flat.";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },

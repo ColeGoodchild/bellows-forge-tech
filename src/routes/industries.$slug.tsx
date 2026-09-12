@@ -9,6 +9,7 @@ import { automationBySlug } from "@/data/automation-services";
 import { seo, serviceSchema, faqSchema, type Crumb } from "@/lib/seo";
 
 export const Route = createFileRoute("/industries/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const industry = industryBySlug(params.slug);
     if (!industry) throw notFound();

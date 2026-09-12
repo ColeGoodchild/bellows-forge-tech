@@ -37,6 +37,7 @@ const faqs = [
 ];
 
 export const Route = createFileRoute("/web-design")({
+  staticData: { sitemap: true },
   head: () =>
     seo({
       path,

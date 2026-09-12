@@ -21,6 +21,7 @@ const description =
   "Automate lead follow-up, missed calls, appointments, CRM updates, customer support, paperwork, and repetitive business tasks with GrowthBellows.";
 
 export const Route = createFileRoute("/automation/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },

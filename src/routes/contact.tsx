@@ -7,6 +7,7 @@ const description =
   "Tell us what your business needs: a new website, better Google rankings, hosting, or automation. We reply within one business day with a straight answer and a flat price.";
 
 export const Route = createFileRoute("/contact")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title },
