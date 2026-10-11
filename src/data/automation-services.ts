@@ -92,7 +92,7 @@ export const automationServices: AutomationService[] = [
     title: "Lead Follow-Up Automation | GrowthBellows",
     description:
       "Respond to every new inquiry within seconds, qualify the lead, notify your team, and keep following up automatically until the customer replies or books.",
-    h1: "Lead Follow-Up Automation",
+    h1: "Automated Lead Follow-Up for Small Businesses",
     intro:
       "The business that replies first usually wins the job. Lead follow-up automation answers every inquiry immediately, then keeps the conversation going until the customer responds.",
     icon: Inbox,

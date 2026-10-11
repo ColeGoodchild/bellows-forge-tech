@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ArrowDown, Check } from "lucide-react";
+import { automationExtras, implementationSteps } from "@/data/automation-extras";
 
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
@@ -49,6 +50,7 @@ function AutomationServicePage() {
   const { slug } = Route.useLoaderData();
   const service = automationBySlug(slug)!;
   const Icon = service.icon;
+  const x = automationExtras[service.slug];
   const related = service.related
     .map((s) => automationBySlug(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
@@ -71,18 +73,41 @@ function AutomationServicePage() {
           <span className="mx-auto flex size-12 items-center justify-center rounded-xl border border-border bg-secondary/60 text-primary">
             <Icon size={22} strokeWidth={1.75} />
           </span>
-          <h1 className="mt-7 text-4xl leading-[1.1] font-semibold sm:text-5xl">{service.h1}</h1>
+          <h1 className="mt-7 text-4xl leading-[1.1] font-semibold sm:text-5xl">{x.h1}</h1>
+          {x.headline ? <p className="mt-5 text-xl font-medium text-primary">{x.headline}</p> : null}
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {service.intro}
+            {x.subheadline}
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild variant="forge" size="xl">
-              <a href="#audit">Request an Automation Audit</a>
+              <a href="#audit">{x.cta}</a>
             </Button>
             <Button asChild variant="steel" size="xl">
-              <Link to="/pricing">See Pricing</Link>
+              <a href="#pricing">See Pricing</a>
             </Button>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-2xl font-semibold sm:text-3xl">The workflow at a glance</h2>
+          <ol className="mt-10 flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
+            {x.diagram.map((d, i) => (
+              <li key={d} className="flex flex-1 flex-col items-center gap-3 lg:flex-row">
+                <div className="panel w-full px-5 py-5 text-center">
+                  <span className="font-mono text-xs text-primary">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-2 text-sm font-medium">{d}</p>
+                </div>
+                {i < x.diagram.length - 1 ? (
+                  <>
+                    <ArrowDown size={18} className="text-primary lg:hidden" aria-hidden />
+                    <ArrowRight size={18} className="hidden shrink-0 text-primary lg:block" aria-hidden />
+                  </>
+                ) : null}
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -166,6 +191,57 @@ function AutomationServicePage() {
         </section>
       ) : null}
 
+      {x.humanHandoff ? (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-3xl px-6 py-20">
+            <h2 className="text-2xl font-semibold sm:text-3xl">Human handoff</h2>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">{x.humanHandoff}</p>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="border-b border-border bg-card/30">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-2xl font-semibold sm:text-3xl">Systems it can connect to</h2>
+          <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
+            Common examples. If your software has an integration or API, we can usually work with it.
+          </p>
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {x.integrations.map((n) => (
+              <li key={n} className="rounded-full border border-border bg-secondary/60 px-4 py-2 text-sm text-muted-foreground">{n}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="pricing" className="scroll-mt-24 border-b border-border">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2">
+          <div className="panel px-8 py-10">
+            <p className="eyebrow">Starting price</p>
+            <p className="mt-5 font-display text-4xl font-semibold">{x.setup}</p>
+            {x.monthly ? <p className="mt-2 text-xl text-primary">+ {x.monthly}</p> : null}
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{x.priceNote}</p>
+            <Button asChild variant="forge" size="lg" className="mt-8">
+              <a href="#audit">{x.cta}</a>
+            </Button>
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold sm:text-3xl">How we implement it</h2>
+            <ol className="mt-6 space-y-5">
+              {implementationSteps.map((st, i) => (
+                <li key={st.t} className="flex gap-4">
+                  <span className="font-mono text-xs text-primary">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p className="text-sm font-semibold">{st.t}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{st.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="text-2xl font-semibold sm:text-3xl">Questions about {service.name.toLowerCase()}</h2>
@@ -214,8 +290,8 @@ function AutomationServicePage() {
       <section id="audit" className="scroll-mt-24 border-b border-border">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-start">
           <div className="max-w-xl">
-            <p className="eyebrow">Automation audit</p>
-            <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">Show us what wastes your time.</h2>
+            <p className="eyebrow">Request an Automation Audit</p>
+            <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">Not sure what to automate?</h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               Tell us about the repetitive work in your business. We'll tell you whether it can be
               automated and what we'd recommend.
