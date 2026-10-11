@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import iqs from "@/assets/work/iqs.jpg";
 import rnd from "@/assets/work/rnd.jpg";
@@ -109,6 +110,11 @@ export function CaseStudies() {
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Link to="/case-studies" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:opacity-80">
+            View All Case Studies <ArrowUpRight size={16} />
+          </Link>
         </div>
       </div>
     </section>
