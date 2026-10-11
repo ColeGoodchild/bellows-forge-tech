@@ -40,7 +40,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         ];
 
         for (const group of dynamic) {
-          if (!isSitemapRouteIncluded(router.routesById[group.routeId])) continue;
+          if (!isSitemapRouteIncluded((router.routesById as Record<string, any>)[group.routeId])) continue;
           for (const slug of group.slugs) {
             const location = router.buildLocation({
               to: group.to,

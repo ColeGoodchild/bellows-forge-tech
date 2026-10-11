@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Pillars } from "@/components/site/Pillars";
 import { CtaBand } from "@/components/site/CtaBand";
 
@@ -37,6 +37,11 @@ function Services() {
             Three services that work together: a website that earns trust, local visibility that
             brings people to it, and automation that handles the follow-up.
           </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm font-semibold text-primary">
+            <Link to="/web-design">Small business web design</Link>
+            <Link to="/local-seo">Local SEO services</Link>
+            <Link to="/automation">AI automation services</Link>
+          </div>
         </div>
       </section>
 
