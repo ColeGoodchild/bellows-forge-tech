@@ -50,7 +50,7 @@ function AutomationServicePage() {
   const { slug } = Route.useLoaderData();
   const service = automationBySlug(slug)!;
   const Icon = service.icon;
-  const x = automationExtras[service.slug];
+  const x = automationExtras[service.slug]!;
   const related = service.related
     .map((s) => automationBySlug(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
