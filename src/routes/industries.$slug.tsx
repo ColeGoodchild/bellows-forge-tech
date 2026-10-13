@@ -18,8 +18,8 @@ function pageFor(industry: Industry): IndustryPage {
     problemsTitle: `What slows down ${industry.name.toLowerCase()}`,
     problems: industry.problems.map((b) => ({ title: b.split(" ").slice(0, 3).join(" "), body: b })),
     services: [
-      { name: "Website design", why: industry.websiteFocus[0], to: "/web-design" },
-      { name: "Local SEO & Google Business Profile", why: industry.seoFocus[0], to: "/local-seo" },
+      { name: "Website design", why: industry.websiteFocus[0] ?? "", to: "/web-design" },
+      { name: "Local SEO & Google Business Profile", why: industry.seoFocus[0] ?? "", to: "/local-seo" },
       ...industry.automations.map((a) => ({
         name: a.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()),
         why: "Removes repetitive follow-up and admin work.",
