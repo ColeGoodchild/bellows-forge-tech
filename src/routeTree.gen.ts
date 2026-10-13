@@ -20,10 +20,13 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as AutomationIndexRouteImport } from './routes/automation.index'
 import { Route as AutomationSlugRouteImport } from './routes/automation.$slug'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 import { Route as LocationsIndexRouteImport } from './routes/locations.index'
 import { Route as LocationsSlugRouteImport } from './routes/locations.$slug'
+import { Route as BlogCategoryCategoryRouteImport } from './routes/blog.category.$category'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -80,6 +83,16 @@ const AutomationSlugRoute = AutomationSlugRouteImport.update({
   path: '/automation/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
   id: '/industries/',
   path: '/industries/',
@@ -100,6 +113,11 @@ const LocationsSlugRoute = LocationsSlugRouteImport.update({
   path: '/locations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCategoryCategoryRoute = BlogCategoryCategoryRouteImport.update({
+  id: '/blog/category/$category',
+  path: '/blog/category/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -112,11 +130,14 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/locations/$slug': typeof LocationsSlugRoute
   '/automation/': typeof AutomationIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/locations/': typeof LocationsIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,11 +150,14 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/locations/$slug': typeof LocationsSlugRoute
   '/automation': typeof AutomationIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/locations': typeof LocationsIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -147,11 +171,14 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/web-design': typeof WebDesignRoute
   '/automation/$slug': typeof AutomationSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/locations/$slug': typeof LocationsSlugRoute
   '/automation/': typeof AutomationIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/locations/': typeof LocationsIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -166,11 +193,14 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
+    | '/blog/$slug'
     | '/industries/$slug'
     | '/locations/$slug'
     | '/automation/'
+    | '/blog/'
     | '/industries/'
     | '/locations/'
+    | '/blog/category/$category'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -183,11 +213,14 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
+    | '/blog/$slug'
     | '/industries/$slug'
     | '/locations/$slug'
     | '/automation'
+    | '/blog'
     | '/industries'
     | '/locations'
+    | '/blog/category/$category'
   id:
     | '__root__'
     | '/'
@@ -200,11 +233,14 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/web-design'
     | '/automation/$slug'
+    | '/blog/$slug'
     | '/industries/$slug'
     | '/locations/$slug'
     | '/automation/'
+    | '/blog/'
     | '/industries/'
     | '/locations/'
+    | '/blog/category/$category'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -218,11 +254,14 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WebDesignRoute: typeof WebDesignRoute
   AutomationSlugRoute: typeof AutomationSlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   LocationsSlugRoute: typeof LocationsSlugRoute
   AutomationIndexRoute: typeof AutomationIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
   LocationsIndexRoute: typeof LocationsIndexRoute
+  BlogCategoryCategoryRoute: typeof BlogCategoryCategoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -304,6 +343,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AutomationSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/industries/': {
       id: '/industries/'
       path: '/industries'
@@ -332,6 +385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/category/$category': {
+      id: '/blog/category/$category'
+      path: '/blog/category/$category'
+      fullPath: '/blog/category/$category'
+      preLoaderRoute: typeof BlogCategoryCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -346,11 +406,14 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WebDesignRoute: WebDesignRoute,
   AutomationSlugRoute: AutomationSlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
   LocationsSlugRoute: LocationsSlugRoute,
   AutomationIndexRoute: AutomationIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   IndustriesIndexRoute: IndustriesIndexRoute,
   LocationsIndexRoute: LocationsIndexRoute,
+  BlogCategoryCategoryRoute: BlogCategoryCategoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
