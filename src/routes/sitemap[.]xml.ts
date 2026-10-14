@@ -10,6 +10,7 @@ import {
 import { automationServices } from "@/data/automation-services";
 import { industries } from "@/components/site/industries-data";
 import { locations } from "@/data/locations";
+import { articles, categories } from "@/data/blog";
 
 const BASE_URL = "https://bellows-forge-tech.lovable.app";
 
@@ -37,7 +38,17 @@ export const Route = createFileRoute("/sitemap.xml")({
             to: "/locations/$slug",
             slugs: locations.map((l) => l.slug),
           },
+          {
+            routeId: "/blog/$slug",
+            to: "/blog/$slug",
+            slugs: articles.map((a) => a.slug),
+          },
         ];
+
+        for (const c of categories) {
+          if (articles.some((a) => a.category === c.slug))
+            entries.push({ path: `/blog/category/${c.slug}` });
+        }
 
         for (const group of dynamic) {
           if (!isSitemapRouteIncluded((router.routesById as Record<string, any>)[group.routeId])) continue;
